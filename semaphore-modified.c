@@ -35,6 +35,7 @@ void *handle_student(void *arg) {
 
     // check if library is open before allowing the student to take a desk.
     sem_getvalue(&open, &library_is_open);
+    printf("sem value is %d\n", library_is_open);
     while (!library_is_open) {
         printf("Student %d is waiting to enter the library.\n", student);
         sleep(1);
