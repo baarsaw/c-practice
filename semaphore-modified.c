@@ -34,11 +34,11 @@ void *handle_student(void *arg) {
     printf("Student %d arrives after %d seconds\n", student, arrival_time);
 
     // check if library is open before allowing the student to take a desk.
-    sem_getvalue(&open, &library_is_open)
+    sem_getvalue(&open, &library_is_open);
     while (!library_is_open) {
         printf("Student %d is waiting to enter the library.\n", student);
         sleep(1);
-        sem_value(&open, &library_is_open)
+        sem_value(&open, &library_is_open);
     }
 
     // Get or wait for a desk
