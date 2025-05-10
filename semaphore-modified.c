@@ -38,7 +38,7 @@ void *handle_student(void *arg) {
     while (!library_is_open) {
         printf("Student %d is waiting to enter the library.\n", student);
         sleep(1);
-        sem_value(&open, &library_is_open);
+        sem_getvalue(&open, &library_is_open);
     }
 
     // Get or wait for a desk
