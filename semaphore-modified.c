@@ -13,7 +13,7 @@ sem_t open;
 int program_loop = 1;
 
 void* handle_library(void* arg) {
-    int open_hours = 12;
+    int open_hours = 3;
     // library starts closed, open by posting to sem
     printf("Library is closed.\n");
     // sem_post(&open);
@@ -25,6 +25,7 @@ void* handle_library(void* arg) {
         sleep(open_hours);
         printf("Library has closed for students.");
         sem_wait(&open);
+        sleep(open_hours);
     }
 }
 
