@@ -13,18 +13,18 @@ sem_t open;
 int program_loop = 1;
 
 void* handle_library(void* arg) {
-    int open_hours = 2;
+    int open_hours = 12;
     // library starts closed, open by posting to sem
     printf("Library is closed.\n");
-    sem_post(&open);
-    printf("Library is open.\n");
+    // sem_post(&open);
+    // printf("Library is open.\n");
     printf("program_loop %d\n", program_loop);
     while (program_loop == 1) {
-        printf("Library has closed for students.");
-        sem_wait(&open);
-        sleep(open_hours);
         printf("Library has opened for students.");
         sem_post(&open);
+        sleep(open_hours);
+        printf("Library has closed for students.");
+        sem_wait(&open);
     }
 }
 
