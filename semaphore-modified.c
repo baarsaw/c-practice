@@ -15,15 +15,12 @@ int program_loop = 1;
 void* handle_library(void* arg) {
     int open_hours = 3;
     // library starts closed, open by posting to sem
-    printf("Library is closed.\n");
-    // sem_post(&open);
-    // printf("Library is open.\n");
-    printf("program_loop %d\n", program_loop);
+    printf("\nLIBRARY IS CLOSED\n\n");
     while (program_loop == 1) {
-        printf("Library has opened for students.");
+        printf("\nLIBRARY IS OPEN\n\n");
         sem_post(&open);
         sleep(open_hours);
-        printf("Library has closed for students.");
+        printf("\nLIBRARY IS CLOSED\n\n");
         sem_wait(&open);
         sleep(open_hours);
     }
@@ -40,7 +37,6 @@ void *handle_student(void *arg) {
 
     // check if library is open before allowing the student to take a desk.
     sem_getvalue(&open, &library_is_open);
-    printf("sem value is %d\n", library_is_open);
     while (!library_is_open) {
         printf("Student %d is waiting to enter the library.\n", student);
         sleep(1);
