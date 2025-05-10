@@ -5,8 +5,8 @@
 #include <time.h>
 #include <semaphore.h>
 
-#define NUM_DESKS 10            // Number of desks available
-#define NUM_STUDENTS 12         // Number of students that need to study
+#define NUM_DESKS 5            // Number of desks available
+#define NUM_STUDENTS 8         // Number of students that need to study
 
 sem_t desks;
 sem_t open;
