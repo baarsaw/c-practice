@@ -10,12 +10,13 @@
 
 sem_t desks;
 sem_t open;
-volatile int program_loop = 1;
+int program_loop = 1;
 
 void* handle_library(void* arg) {
-    int open_hours = 10;
+    int open_hours = 2;
     // library starts closed, open by posting to sem
-    printf("Library is closed.");
+    printf("Library is closed.\n");
+    printf("program_loop %d\n", program_loop);
     while (program_loop == 1);
         printf("Library has opened for students.");
         sem_post(&open);
